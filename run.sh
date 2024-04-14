@@ -87,7 +87,7 @@ done
 echo
 
 # LANZAMOS LA CAPTURA
-
+FECHA_ACTUAL_FORMATEADA=$(date +"%Y%m%d%H%M")
 FECHA_ACTUAL=`date`
 echo "Inicio de captura el $FECHA_ACTUAL"
 
@@ -98,6 +98,13 @@ rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${TEMP
 
 FECHA_ACTUAL=`date`
 echo "Fin de captura el $FECHA_ACTUAL"
+echo
 
 # CREAMOS EL MAPA DE FRECUENCIAS
+
+echo "Creando mapa de frecuencias en $OUTPUT_DIR con heatmap:"
+
+# python3 heatmap/heatmap.py out.csv heatmap.png
+echo "python3 heatmap/heatmap.py ${TEMP_DIR}/out.csv ${OUTPUT_DIR}/${FECHA_ACTUAL_FORMATEADA}.png"
+python3 heatmap/heatmap.py ${TEMP_DIR}/out.csv ${OUTPUT_DIR}/${FECHA_ACTUAL_FORMATEADA}.png
 
