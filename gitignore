@@ -1,0 +1,5 @@
+# Directorio de salida de mapas
+/output/
+
+# Directorio temporal de captura del SDR en bruto
+/tmp/
