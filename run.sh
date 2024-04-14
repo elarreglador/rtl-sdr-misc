@@ -86,7 +86,6 @@ while true; do
 done
 echo
 
-
 # LANZAMOS LA CAPTURA
 
 FECHA_ACTUAL=`date`
@@ -94,8 +93,11 @@ echo "Inicio de captura el $FECHA_ACTUAL"
 
 # rtl_power -f 100M:108M:40k -e 5m ./output/out.csv
 echo "Lanzamos rtl_power:"
-echo "rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${OUTPUT_DIR}/out.csv"
-rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${OUTPUT_DIR}/out.csv
+echo "rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${TEMP_DIR}/out.csv"
+rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${TEMP_DIR}/out.csv
 
 FECHA_ACTUAL=`date`
 echo "Fin de captura el $FECHA_ACTUAL"
+
+# CREAMOS EL MAPA DE FRECUENCIAS
+
