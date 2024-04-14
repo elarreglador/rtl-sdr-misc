@@ -19,3 +19,5 @@ Si durante el escaneo hay una frecuencia en la qeu se recibe una emision intermi
 REQUISITOS
 ********************************************
 Esta aplicacion funciona para Linux, se requiere tambien tener instalado y funcional rtl_power para la captura de trafico de radio.
+
+Tambien es recomendable un receptor SDR, pero aunque no lo he probado entiendo que es posible capturar desde los muchos que se encuentran disponibles on-line
