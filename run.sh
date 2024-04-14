@@ -191,9 +191,22 @@ while true; do
     TAREA=$?
 
     if [ $TAREA == "1" ]; then
-        echo "TAREA: Escanear un rango de frecuencia"
+        echo "TAREA1: Escanear un rango de frecuencia"
         tarea1
     fi
+    if [ $TAREA == "2" ]; then
+        echo "TAREA2: Escanear un rango de frecuencia en bucle"
+        # TODO: implementar metodo
+    fi
+    if [ $TAREA == "3" ]; then
+        echo "TAREA3: Escanear varios rangos de frecuencias consecutivos (uno tras otro)"
+        # TODO: implementar metodo
+    fi
+    if [ $TAREA == "4" ]; then
+        echo "TAREA4: Escanear varios rangos de frecuencias consecutivos (uno tras otro) en bucle"
+        # TODO: implementar metodo
+    fi
+    echo
 done
 
 
