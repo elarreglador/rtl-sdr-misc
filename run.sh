@@ -22,7 +22,7 @@ fi
 # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA INICIAL A ESCANEAR
 
 while true; do
-    echo "Por favor, ingresa el rango inicial de frecuencia de captura (ej: 80000 para radio comercial):"
+    echo "Por favor, ingresa el rango inicial de frecuencia de captura en Hz (ej: 88000 para radio comercial):"
     read FREC_INICIO
     
     # Verifica si la entrada es un número entero
@@ -36,7 +36,7 @@ done
 # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA FINAL
 
 while true; do
-    echo "Por favor, ingresa el rango final de captura (ej: 110000 para radio comercial):"
+    echo "Por favor, ingresa el rango final de captura en Hz (ej: 108000 para radio comercial):"
     read FREC_FINAL
     
     # Verifica si la entrada es un número entero
