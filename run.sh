@@ -49,5 +49,32 @@ while true; do
 
 done
 
-echo $FREC_INICIO " - " $FREC_FINAL
+# PEDIMOS AL USUARIO EL TAMAñO DEL CONTENEDOR (PIXEL)
+
+while true; do
+    echo "Por favor, ingresa el tamaño del contenedor. esto es inversamente proporcional al tamaño de la imagen que obtendremos, cuanto mas grande, menos resolucion tendra la imagen final (recomendado 25-100)"
+    read CONTENEDOR
+    
+    # Verifica si la entrada es un número entero
+    if [[ $CONTENEDOR =~ ^[0-9]+$ ]]; then
+        break  # Sale del bucle si es un número entero válido
+    else
+        echo "ERROR: '$CONTENEDOR' no es un número entero. Inténtalo de nuevo."
+    fi
+done
+
+# PEDIMOS AL USUARIO TIEMPO DE ESCANEO
+
+while true; do
+    echo "Cuantos minutos vamos a estar capturando informacion?:"
+    read MINUTOS
+    
+    # Verifica si la entrada es un número entero
+    if [[ $MINUTOS =~ ^[0-9]+$ ]]; then
+        break 
+    else
+        echo "ERROR: '$MINUTOS' no es un número entero. Inténtalo de nuevo."
+    fi
+done
+
 
