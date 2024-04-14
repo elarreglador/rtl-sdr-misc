@@ -5,7 +5,12 @@
 OUTPUT_DIR="./output"
 TEMP_DIR="./tmp"
 # FREC_INICIO
-# MHZ_FINAL
+# FREC_FINAL
+# CONTENEDOR
+# MINUTOS 
+# FECHA_ACTUAL
+
+
 
 # PREPARAMOS EL AREA DE TRABAJO
 
@@ -22,7 +27,7 @@ fi
 # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA INICIAL A ESCANEAR
 
 while true; do
-    echo "Por favor, ingresa el rango inicial de frecuencia de captura en Hz (ej: 88000 para radio comercial):"
+    echo "Por favor, ingresa el rango inicial de frecuencia de captura en MHz (ej: 88 para radio comercial):"
     read FREC_INICIO
     
     # Verifica si la entrada es un número entero
@@ -32,11 +37,12 @@ while true; do
         echo "ERROR: '$FREC_INICIO' no es un número entero. Inténtalo de nuevo."
     fi
 done
+echo
 
 # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA FINAL
 
 while true; do
-    echo "Por favor, ingresa el rango final de captura en Hz (ej: 108000 para radio comercial):"
+    echo "Por favor, ingresa el rango final de captura en MHz (ej: 108 para radio comercial):"
     read FREC_FINAL
     
     # Verifica si la entrada es un número entero
@@ -48,6 +54,7 @@ while true; do
     fi
 
 done
+echo
 
 # PEDIMOS AL USUARIO EL TAMAñO DEL CONTENEDOR (PIXEL)
 
@@ -62,6 +69,7 @@ while true; do
         echo "ERROR: '$CONTENEDOR' no es un número entero. Inténtalo de nuevo."
     fi
 done
+echo
 
 # PEDIMOS AL USUARIO TIEMPO DE ESCANEO
 
@@ -76,5 +84,18 @@ while true; do
         echo "ERROR: '$MINUTOS' no es un número entero. Inténtalo de nuevo."
     fi
 done
+echo
 
 
+# LANZAMOS LA CAPTURA
+
+FECHA_ACTUAL=`date`
+echo "Inicio de captura el $FECHA_ACTUAL"
+
+# rtl_power -f 100M:108M:40k -e 5m ./output/out.csv
+echo "Lanzamos rtl_power:"
+echo "rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${OUTPUT_DIR}/out.csv"
+rtl_power -f ${FREC_INICIO}M:${FREC_FINAL}M:${CONTENEDOR}k -e ${MINUTOS}m ${OUTPUT_DIR}/out.csv
+
+FECHA_ACTUAL=`date`
+echo "Fin de captura el $FECHA_ACTUAL"
