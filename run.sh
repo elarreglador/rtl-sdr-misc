@@ -4,13 +4,15 @@
 
 # VARIABLES
 
-OUTPUT_DIR="./output"
-TEMP_DIR="./tmp"
-# FREC_INICIO
-# FREC_FINAL
 # CONTENEDOR
-# MINUTOS 
 # FECHA_ACTUAL
+# FREC_FINAL
+# FREC_INICIO
+# MINUTOS 
+OUTPUT_DIR="./output"
+# TAREA
+TEMP_DIR="./tmp"
+
 
 
 
@@ -51,6 +53,44 @@ lanza_captura() {
     FECHA_ACTUAL=`date`
     echo "Fin de captura el $FECHA_ACTUAL"
     echo
+}
+
+menu_principal() {
+    while true; do
+
+        echo "*** MENU ***"
+        echo
+        echo "0) Salir"
+        echo "1) Escanear un rango de frecuencia"
+        echo "2) Escanear un rango de frecuencia en bucle"
+        echo "3) Escanear varios rangos de frecuencias consecutivos (uno tras otro)"
+        echo "4) Escanear varios rangos de frecuencias consecutivos (uno tras otro) en bucle"
+        echo
+        read -p "Selecciona una opción y pulsa intro: " _OPCION
+
+        case $_OPCION in
+            0)
+                echo "Cerrando ..."
+                exit 0
+                ;;
+            1)
+                return 1
+                ;;
+            2)
+                return 2
+                ;;
+            3)
+                return 3
+                ;;
+            4)
+                return 4
+                ;;
+            *)
+                echo "Opción inválida. Por favor, selecciona una opción del 0 al 4."
+                ;;
+        esac
+    done
+    
 }
 
 pide_frecuencia_final() {
@@ -119,27 +159,44 @@ pide_tiempo_de_escaneo() {
     return $_MINUTOS
 }
 
+tarea1() { # Escanear un rango de frecuencia
+    # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA INICIAL A ESCANEAR
+    pide_frecuencia_inicial
+    FREC_INICIO=$?
+    # PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA FINAL
+    pide_frecuencia_final
+    FREC_FINAL=$?
+    # PEDIMOS AL USUARIO EL TAMAñO DEL CONTENEDOR (PIXEL)
+    pide_medida_del_contenedor
+    CONTENEDOR=$?
+    # PEDIMOS AL USUARIO TIEMPO DE ESCANEO
+    pide_tiempo_de_escaneo
+    MINUTOS=$?
+    # LANZAMOS LA CAPTURA
+    lanza_captura
+    # CREAMOS EL MAPA DE FRECUENCIAS
+    crea_heatmap
+}
 
 
-# MAIN
+
+# --- MAIN ---
 
 # PREPARAMOS EL AREA DE TRABAJO
 crea_directorios_si_no_existen
-# PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA INICIAL A ESCANEAR
-pide_frecuencia_inicial
-FREC_INICIO=$?
-# PEDIMOS AL USUARIO EL RANGO DE FRECUENCIA FINAL
-pide_frecuencia_final
-FREC_FINAL=$?
-# PEDIMOS AL USUARIO EL TAMAñO DEL CONTENEDOR (PIXEL)
-pide_medida_del_contenedor
-CONTENEDOR=$?
-# PEDIMOS AL USUARIO TIEMPO DE ESCANEO
-pide_tiempo_de_escaneo
-MINUTOS=$?
-# LANZAMOS LA CAPTURA
-lanza_captura
-# CREAMOS EL MAPA DE FRECUENCIAS
-crea_heatmap
+
+while true; do
+    # MENU PRINCIPAL
+    menu_principal
+    TAREA=$?
+
+    if [ $TAREA == "1" ]; then
+        echo "TAREA: Escanear un rango de frecuencia"
+        tarea1
+    fi
+done
+
+
+
 
 
