@@ -41,6 +41,7 @@ crea_heatmap() {
 lanza_captura() {
     FECHA_ACTUAL_FORMATEADA=$(date +"%Y%m%d%H%M")
     FECHA_ACTUAL=`date`
+    echo "**********************************************************************"
     echo "Inicio de captura el $FECHA_ACTUAL"
 
     # rtl_power -f 88M:108M:40k -e 5m ./output/out.csv
@@ -196,6 +197,9 @@ while true; do
     fi
     if [ $TAREA == "2" ]; then
         echo "TAREA2: Escanear un rango de frecuencia en bucle"
+        while true; do
+            tarea1
+        done
         # TODO: implementar metodo
     fi
     if [ $TAREA == "3" ]; then
