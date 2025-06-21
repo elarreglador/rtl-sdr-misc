@@ -59,10 +59,11 @@ def scan(inicio, final, resolucion, minutos):
     ahora = datetime.now()
     ahora_format = ahora.strftime("%Y%m%d%H%M")
     print(ahora.strftime("Hora actual: %H:%M"))
+
     # Rutas de archivo
     output_dir = "./output"
-    csv_filename = f"{output_dir}/{ahora_format}.csv"
-    png_filename = f"{output_dir}/{inicio}Mhz-{final}Mhz-{minutos}min_{ahora_format}.png"
+    csv_filename = f"{output_dir}/csv/{inicio}Mhz-{final}Mhz-{minutos}min_{ahora_format}.csv"
+    png_filename = f"{output_dir}/png/{inicio}Mhz-{final}Mhz-{minutos}min_{ahora_format}.png"
 
     # Asegurarse de que el directorio de salida exista
     if not os.path.exists(output_dir):
